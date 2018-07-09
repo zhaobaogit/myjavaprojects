@@ -3,4 +3,34 @@
   <groupId>my</groupId>
   <artifactId>sendfileServer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  	<build>
+		<plugins>
+			<!-- maven打包成可运行jar文件所需依赖项 -->
+			<plugin>  
+	            <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-shade-plugin</artifactId>  
+	            <version>1.4</version>
+	            <executions>  
+	                <execution>  
+	                    <phase>package</phase>  
+	                    <goals>  
+	                        <goal>shade</goal>  
+	                    </goals>  
+	                    <configuration>  
+	                        <transformers>  
+	                            <transformer  
+	                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">  
+	                                <mainClass>sendfile.Appmain</mainClass>
+	                            </transformer>
+	                        </transformers>  
+	                    </configuration>  
+	                </execution>  
+	            </executions> 
+			</plugin>
+			<!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId> 
+                <artifactId>maven-jar-plugin</artifactId>
+             </plugin> -->
+		</plugins>
+	</build>
 </project>

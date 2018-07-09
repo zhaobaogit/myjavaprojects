@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -12,12 +14,11 @@ public class FileUtil {
 
 	public static void readShow(String fileName) {
 		ClassLoader classLoader = FileUtil.class.getClassLoader();
-        URL url = classLoader.getResource(fileName);
-        File file = new File(url.getFile());
-        FileReader reader = null;
+        InputStream instream = classLoader.getResourceAsStream(fileName);
+        InputStreamReader reader = null;
         BufferedReader br = null;
         try {
-			reader = new FileReader(file);
+			reader = new InputStreamReader(instream, "UTF-8");
 			br = new BufferedReader(reader);
 			String tempstr = "";
 			tempstr = br.readLine();

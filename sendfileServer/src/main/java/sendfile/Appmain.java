@@ -160,7 +160,7 @@ public class Appmain {
 			dos.flush();
 			// 文件名和长度
 			String fileName = dis.readUTF();
-			File file = new File(directory.getAbsolutePath() + File.separatorChar + fileName);
+			File file = new File(tofile);
 			fos = new FileOutputStream(file);
  
 			// 开始接收文件
@@ -170,7 +170,7 @@ public class Appmain {
 			    fos.write(bytes, 0, length);
 			    fos.flush();
 			}
-			System.out.println("======== 文件接收成功 [File Name：" + fileName + "] ========");
+			System.out.println("======== 文件接收成功 [File Name：" + tofile + "] ========");
 		}
     }
  
